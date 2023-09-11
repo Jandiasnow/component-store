@@ -306,25 +306,25 @@ importers:
         version: 0.0.1
       '@tenx-ui/bff-client':
         specifier: 0.1.2
-        version: 0.1.2(@tenx-ui/materials@1.5.9)(antd@5.6.4)(react@18.1.0)(swr@2.0.0)
+        version: 0.1.2(@tenx-ui/materials@1.5.10)(antd@5.6.4)(react@18.1.0)(swr@2.0.0)
       '@tenx-ui/charts':
         specifier: 1.1.2
         version: 1.1.2(@babel/core@7.22.9)(antd@5.6.4)(classnames@2.2.5)(prop-types@15.8.1)(react-dom@18.1.0)(react@18.1.0)
       '@tenx-ui/component-store-bff-client':
-        specifier: 0.0.16
+        specifier: 0.0.17
         version: link:../bff-client
       '@tenx-ui/form-helper':
         specifier: 0.0.2
         version: 0.0.2(react@18.1.0)
       '@tenx-ui/icon':
-        specifier: ^2.4.17
-        version: 2.4.17(classnames@2.2.5)(prop-types@15.8.1)(react-dom@18.1.0)(react@18.1.0)
+        specifier: ^2.4.27
+        version: 2.4.27(classnames@2.2.5)(prop-types@15.8.1)(react-dom@18.1.0)(react@18.1.0)
       '@tenx-ui/icon-materials':
-        specifier: 0.1.1
-        version: 0.1.1(react-dom@18.1.0)(react@18.1.0)
+        specifier: 0.1.4
+        version: 0.1.4(react-dom@18.1.0)(react@18.1.0)
       '@tenx-ui/materials':
-        specifier: 1.5.9
-        version: 1.5.9(antd@5.6.4)(lodash@4.17.21)(prop-types@15.8.1)(react-dom@18.1.0)(react-router-dom@6.14.2)(react@18.1.0)
+        specifier: 1.5.10
+        version: 1.5.10(antd@5.6.4)(lodash@4.17.21)(prop-types@15.8.1)(react-dom@18.1.0)(react-router-dom@6.14.2)(react@18.1.0)
       '@tenx-ui/request':
         specifier: ^1.0.0-beta.6
         version: 1.0.0-beta.6
@@ -6506,7 +6506,7 @@ packages:
     resolution: {integrity: sha512-aCo7kgzZ18i3gZ6ZZryoYP0pBbTDyqKT8nSIwNXgMckL+pxUA+Iy5owvbZ/Hptexn603adg+ppocwxkvGxiBaw==}
     dev: false
 
-  /@tenx-ui/bff-client@0.1.2(@tenx-ui/materials@1.5.9)(antd@5.6.4)(react@18.1.0)(swr@2.0.0):
+  /@tenx-ui/bff-client@0.1.2(@tenx-ui/materials@1.5.10)(antd@5.6.4)(react@18.1.0)(swr@2.0.0):
     resolution: {integrity: sha512-4mKtvdwfnwr5Tm7VOyns/mPa2XRXrJ/2OKotvcef1umlSPDPQvwdjXPZ6Jt14WS6/aGtosUUDLkyCw77zKqM+g==}
     peerDependencies:
       '@tenx-ui/materials': '>=1.1.1'
@@ -6514,7 +6514,7 @@ packages:
       react: '>=16.9.0'
       swr: '>=2.0.0'
     dependencies:
-      '@tenx-ui/materials': 1.5.9(antd@5.6.4)(lodash@4.17.21)(prop-types@15.8.1)(react-dom@18.1.0)(react-router-dom@6.14.2)(react@18.1.0)
+      '@tenx-ui/materials': 1.5.10(antd@5.6.4)(lodash@4.17.21)(prop-types@15.8.1)(react-dom@18.1.0)(react-router-dom@6.14.2)(react@18.1.0)
       antd: 5.6.4(react-dom@18.1.0)(react@18.1.0)
       graphql: 16.6.0
       graphql-request: 5.2.0(graphql@16.6.0)
@@ -6576,8 +6576,8 @@ packages:
       react: 18.1.0
     dev: false
 
-  /@tenx-ui/icon-materials@0.1.1(react-dom@18.1.0)(react@18.1.0):
-    resolution: {integrity: sha512-eg9kVvDq27WUn36fEhaQtqAIH1ElZdUmCgUcP/toAUSZPqnNOccOhr/9FS6U1InPe+enVyleDkFjFy9WmTzBUw==}
+  /@tenx-ui/icon-materials@0.1.4(react-dom@18.1.0)(react@18.1.0):
+    resolution: {integrity: sha512-Ro31D5Nn3mCasbU8WouVgVIRcBbAA0B/fc6u/x+/mG0ZMTxT0pcIGpbKKgABmidtrusTaz5fBvASMmx04C+jVg==}
     peerDependencies:
       moment: latest
       react: ^17.x
@@ -6587,8 +6587,8 @@ packages:
       react-dom: 18.1.0(react@18.1.0)
     dev: false
 
-  /@tenx-ui/icon@2.4.17(classnames@2.2.5)(prop-types@15.8.1)(react-dom@18.1.0)(react@18.1.0):
-    resolution: {integrity: sha512-CrhsAtRR4ModpQbFudq4CH3wWQJRHuwycp1CPHyHlcXQziqlcc+hsiaK/X++FSsCloPMVspchLY9E9wAPfIyVQ==}
+  /@tenx-ui/icon@2.4.27(classnames@2.2.5)(prop-types@15.8.1)(react-dom@18.1.0)(react@18.1.0):
+    resolution: {integrity: sha512-p+JC1/cnZtgMuxW9dqobWtK3tX9Sr7Nu/qRupcvw1J6vjywSBEcY4Oo+1KUG3wau85CjoXtzrsqAMc/YadS+QA==}
     peerDependencies:
       classnames: '>=2.2.5'
       prop-types: '>=15.6.1'
@@ -6603,6 +6603,22 @@ packages:
 
   /@tenx-ui/less@1.0.1:
     resolution: {integrity: sha512-KRr4cj9qOubriyB9mqLT86qceHj+3bj3f4YAhV27lBcwN023Zzc5643g0IMuChzm4MDoJJSmDL6v34hOefNtfA==}
+    dev: false
+
+  /@tenx-ui/materials@1.5.10(antd@5.6.4)(lodash@4.17.21)(prop-types@15.8.1)(react-dom@18.1.0)(react-router-dom@6.14.2)(react@18.1.0):
+    resolution: {integrity: sha512-gVLQ/aErOiubUKa01tqPdjOI3dK7wcyBmDKEueOKC5sUvn6kjmUmo8Tz+1YoTYs0cKDquFTY5ni1Ahifk7bFpw==}
+    peerDependencies:
+      antd: ^5.1.5
+    dependencies:
+      '@tenx-ui/utils': 2.3.1(lodash@4.17.21)(moment@2.29.4)(prop-types@15.8.1)(react-dom@18.1.0)(react-router-dom@6.14.2)(react@18.1.0)
+      antd: 5.6.4(react-dom@18.1.0)(react@18.1.0)
+    transitivePeerDependencies:
+      - lodash
+      - moment
+      - prop-types
+      - react
+      - react-dom
+      - react-router-dom
     dev: false
 
   /@tenx-ui/materials@1.5.8(antd@5.7.1)(lodash@4.17.21)(moment@2.29.4)(prop-types@15.8.1)(react-dom@18.1.0)(react-router-dom@6.14.2)(react@18.1.0):
@@ -6620,22 +6636,6 @@ packages:
       - react-dom
       - react-router-dom
     dev: true
-
-  /@tenx-ui/materials@1.5.9(antd@5.6.4)(lodash@4.17.21)(prop-types@15.8.1)(react-dom@18.1.0)(react-router-dom@6.14.2)(react@18.1.0):
-    resolution: {integrity: sha512-V5QzWB126hyXzjGLJ41dGX0KUKc85/zRbWx8kcyxOYCYJ6SEGFIMMdoLXOJTbaUtW0SH5ENEo2qG5QFTFCxjkw==}
-    peerDependencies:
-      antd: ^5.1.5
-    dependencies:
-      '@tenx-ui/utils': 2.3.1(lodash@4.17.21)(moment@2.29.4)(prop-types@15.8.1)(react-dom@18.1.0)(react-router-dom@6.14.2)(react@18.1.0)
-      antd: 5.6.4(react-dom@18.1.0)(react@18.1.0)
-    transitivePeerDependencies:
-      - lodash
-      - moment
-      - prop-types
-      - react
-      - react-dom
-      - react-router-dom
-    dev: false
 
   /@tenx-ui/request@1.0.0-beta.6:
     resolution: {integrity: sha512-4W4yKKiw+BfXnVOLwpYvJDm/c+csrbR8EyQnDEM7T91KYvSqBB4A60Mh/jR5A7+YQz3LCGgWME4fZEn1Ol3/aw==}
