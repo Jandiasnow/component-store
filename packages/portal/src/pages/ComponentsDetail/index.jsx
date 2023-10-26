@@ -39,6 +39,8 @@ import {
   TenxIconTips,
 } from '@tenx-ui/icon-materials';
 
+import TenxUiReactMarkdownLowcodeMaterials from '@tenx-ui/react-markdown-lowcode-materials';
+
 import { getUnifiedHistory } from '@tenx-ui/utils/es/UnifiedLink/index.prod';
 import { matchPath, useLocation } from '@umijs/max';
 import qs from 'query-string';
@@ -82,15 +84,18 @@ class ComponentsDetail$$Page extends React.Component {
     __$$i18n._inject2(this);
 
     this.state = {
+      tab: 'tab-item-1',
+      readme: undefined,
+      cluster: undefined,
+      tenants: [],
+      version: undefined,
+      modalType: 'delete',
       isOpenModal: false,
       modalType: 'delete',
       version: undefined,
       cluster: undefined,
       modalLoading: false,
-      tenants: [],
-      readme: undefined,
       readmeLoading: false,
-      tab: 'tab-item-1',
     };
   }
 
@@ -131,6 +136,21 @@ class ComponentsDetail$$Page extends React.Component {
       return `${item.displayName}(${item.chartName || '-'})`;
     }
     return item.chartName || '-';
+  }
+
+  initTab() {
+    const version = this.getVersionInfo()?.version;
+    const tab = this.appHelper?.history?.query?.tab;
+    this.setState({
+      tab: tab || 'tab-item-1',
+    });
+    if (!version) {
+      setTimeout(() => {
+        this.initTab();
+      }, 300);
+      return;
+    }
+    tab && this.handleTabChange(tab);
   }
 
   closeModal() {
@@ -177,6 +197,20 @@ class ComponentsDetail$$Page extends React.Component {
     tab && this.handleTabChange(tab);
   }
 
+  async getReademe() {
+    this.setState({
+      readmeLoading: true,
+    });
+    const res = await this.utils.bff.getComponentChartReadme({
+      name: this.appHelper?.match?.params?.id,
+      version: this.getVersionInfo()?.version,
+    });
+    this.setState({
+      readme: res?.component?.chart?.readme,
+      readmeLoading: false,
+    });
+  }
+
   async loadCluster() {
     const res = await this.props.appHelper?.utils?.bffSdk?.getCluster({
       name: this.getCluster(),
@@ -205,35 +239,23 @@ class ComponentsDetail$$Page extends React.Component {
     );
   }
 
-  async handleOprationMenuClick(e) {
-    if (e?.key === 'subscription') {
-      this.setState(
-        {
-          isOpenModal: true,
-          modalType: 'subscription',
-        },
-        () => {
-          const { chartName } = this.props.useGetComponent?.data?.component || {};
-          this.setFormValues({
-            chartName,
-            version: this.getVersionInfo()?.version,
-          });
-        }
-      );
+  handleTabChange(v) {
+    this.setState({
+      tab: v,
+    });
+    if (v === 'READEME') {
+      this.getReademe();
     }
-    if (e?.key === 'download') {
-      const { chartName, repository } = this.props.useGetComponent?.data?.component || {};
-      const res = await this.utils.bff.downloadComponent({
-        cluster: this.getCluster(),
-        chart: {
-          chartName,
-          repository,
-          version: this.getVersionInfo()?.version,
-        },
-      });
-      const url = res?.componentDownload;
-      window.open(url);
-    }
+  }
+
+  openDeleteModal() {
+    this.setState({
+      isOpenModal: true,
+    });
+  }
+
+  getCurrentAnchor(activeLink) {
+    return activeLink || '#description';
   }
 
   handleRefresh() {
@@ -277,27 +299,22 @@ class ComponentsDetail$$Page extends React.Component {
     }
   }
 
-  async loadTenants() {
-    const res = await this.props.appHelper?.utils?.bffSdk?.getCurrentUserTenants();
-    const tenants =
-      res?.userCurrent?.tenants?.map(item => {
-        item.projects =
-          item.projects
-            ?.filter(item => {
-              return item.clusters?.some(cluster => cluster.name === this.getCluster());
-            })
-            ?.map(item => ({
-              label: item.fullName,
-              value: item.name,
-            })) || [];
-        return {
-          label: item.fullName,
-          value: JSON.stringify(item),
-        };
-      }) || [];
-    this.setState({
-      tenants,
-    });
+  handleOprationBtnClick(e) {
+    const pre = this.appHelper?.location?.pathname?.split('/')?.slice(0, 4)?.join('/');
+    this.history.push(
+      `${pre}/management-action/install/${
+        this.props.useGetComponent?.data?.component?.name
+      }?cluster=${this.getCluster()}`
+    );
+  }
+
+  handleVersionMenuClick(e) {
+    this.setState(
+      {
+        version: e.key,
+      },
+      () => this.getReademe()
+    );
   }
 
   async confirmSubscriptionModal(e, payload) {
@@ -1505,6 +1522,7 @@ class ComponentsDetail$$Page extends React.Component {
                   {
                     key: 'tab-item-2',
                     label: this.i18n('i18n-thxp526w') /* 组件评测 */,
+                    hidden: true,
                     children: (
                       <Row wrap={true} __component_name="Row">
                         <Col span={24} __component_name="Col">
@@ -1813,24 +1831,9 @@ class ComponentsDetail$$Page extends React.Component {
                     key: 'READEME',
                     label: 'READEME',
                     children: (
-                      <Spin
-                        spinning={__$$eval(() => this.state.readmeLoading)}
-                        __component_name="Spin"
-                      >
-                        <Typography.Paragraph
-                          code={false}
-                          mark={false}
-                          style={{ fontSize: '' }}
-                          delete={false}
-                          strong={false}
-                          disabled={false}
-                          editable={false}
-                          ellipsis={false}
-                          underline={false}
-                        >
-                          {__$$eval(() => this.state.readme || '-')}
-                        </Typography.Paragraph>
-                      </Spin>
+                      <TenxUiReactMarkdownLowcodeMaterials __component_name="TenxUiReactMarkdownLowcodeMaterials">
+                        {__$$eval(() => this.state.readme || '-')}
+                      </TenxUiReactMarkdownLowcodeMaterials>
                     ),
                   },
                 ]}
